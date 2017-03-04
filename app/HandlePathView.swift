@@ -28,21 +28,24 @@ class HandlePathView: UIView {
     }
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let touch = touches.first else {
-            return
-        }
-
-        let point = touch.location(in: self)
-
         if mode == .move {
-            rxx.moveTo.value = point
-        } else if touch.force > forceTouchThreshold {
-            mode = .move
-            rxx.moveTo.value = point
+            for touch in touches {
+                let point = touch.location(in: self)
+                rxx.moveTo.value = point
+            }
         } else {
-            mode = .draw
-            currentPath?.line(to: point)
-            rxx.path.value = currentPath
+            guard let touch = touches.first else {
+                return
+            }
+            let point = touch.location(in: self)
+            if touch.force > forceTouchThreshold {
+                mode = .move
+                rxx.moveTo.value = point
+            } else {
+                mode = .draw
+                currentPath?.line(to: point)
+                rxx.path.value = currentPath
+            }
         }
     }
 
