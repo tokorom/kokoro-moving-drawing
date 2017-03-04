@@ -7,14 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3871E23BC87DA4412C05F713 /* Pods_DrawingCanvas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ECAB8F8CBDDDF77D76FCC1C /* Pods_DrawingCanvas.framework */; };
 		F3C148E71E69528F00719E6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C148E61E69528F00719E6C /* AppDelegate.swift */; };
 		F3C148E91E69528F00719E6C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C148E81E69528F00719E6C /* ViewController.swift */; };
 		F3C148EC1E69528F00719E6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3C148EA1E69528F00719E6C /* Main.storyboard */; };
 		F3C148EE1E69528F00719E6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3C148ED1E69528F00719E6C /* Assets.xcassets */; };
 		F3C148F11E69528F00719E6C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3C148EF1E69528F00719E6C /* LaunchScreen.storyboard */; };
+		F3C148F91E69533E00719E6C /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C148F81E69533E00719E6C /* CanvasView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2537BFD3A01A105E96E971B4 /* Pods-DrawingCanvas.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrawingCanvas.release.xcconfig"; path = "Pods/Target Support Files/Pods-DrawingCanvas/Pods-DrawingCanvas.release.xcconfig"; sourceTree = "<group>"; };
+		3DE8904E904D34AD3AE8514E /* Pods-DrawingCanvas.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrawingCanvas.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DrawingCanvas/Pods-DrawingCanvas.debug.xcconfig"; sourceTree = "<group>"; };
+		8ECAB8F8CBDDDF77D76FCC1C /* Pods_DrawingCanvas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DrawingCanvas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3C148E31E69528F00719E6C /* DrawingCanvas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrawingCanvas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3C148E61E69528F00719E6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F3C148E81E69528F00719E6C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +27,7 @@
 		F3C148ED1E69528F00719E6C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3C148F01E69528F00719E6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F3C148F21E69528F00719E6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F3C148F81E69533E00719E6C /* CanvasView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +35,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3871E23BC87DA4412C05F713 /* Pods_DrawingCanvas.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F701BC6BD7A951D1C0B814B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3DE8904E904D34AD3AE8514E /* Pods-DrawingCanvas.debug.xcconfig */,
+				2537BFD3A01A105E96E971B4 /* Pods-DrawingCanvas.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F20AB864D7D92DE57D591EF4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8ECAB8F8CBDDDF77D76FCC1C /* Pods_DrawingCanvas.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F3C148DA1E69528F00719E6C = {
 			isa = PBXGroup;
 			children = (
-				F3C148E51E69528F00719E6C /* DrawingCanvas */,
+				F3C148E51E69528F00719E6C /* app */,
 				F3C148E41E69528F00719E6C /* Products */,
+				3F701BC6BD7A951D1C0B814B /* Pods */,
+				F20AB864D7D92DE57D591EF4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -51,17 +77,18 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		F3C148E51E69528F00719E6C /* DrawingCanvas */ = {
+		F3C148E51E69528F00719E6C /* app */ = {
 			isa = PBXGroup;
 			children = (
 				F3C148E61E69528F00719E6C /* AppDelegate.swift */,
 				F3C148E81E69528F00719E6C /* ViewController.swift */,
+				F3C148F81E69533E00719E6C /* CanvasView.swift */,
 				F3C148EA1E69528F00719E6C /* Main.storyboard */,
 				F3C148ED1E69528F00719E6C /* Assets.xcassets */,
 				F3C148EF1E69528F00719E6C /* LaunchScreen.storyboard */,
 				F3C148F21E69528F00719E6C /* Info.plist */,
 			);
-			path = DrawingCanvas;
+			path = app;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +98,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F3C148F51E69528F00719E6C /* Build configuration list for PBXNativeTarget "DrawingCanvas" */;
 			buildPhases = (
+				2F4303E69207C2A5C5E15A33 /* [CP] Check Pods Manifest.lock */,
 				F3C148DF1E69528F00719E6C /* Sources */,
 				F3C148E01E69528F00719E6C /* Frameworks */,
 				F3C148E11E69528F00719E6C /* Resources */,
+				E069188D43F72C4B45D668BF /* [CP] Embed Pods Frameworks */,
+				EF1D6986244CF49ECAC3BCB0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -132,6 +162,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2F4303E69207C2A5C5E15A33 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E069188D43F72C4B45D668BF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DrawingCanvas/Pods-DrawingCanvas-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EF1D6986244CF49ECAC3BCB0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DrawingCanvas/Pods-DrawingCanvas-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F3C148DF1E69528F00719E6C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -139,6 +217,7 @@
 			files = (
 				F3C148E91E69528F00719E6C /* ViewController.swift in Sources */,
 				F3C148E71E69528F00719E6C /* AppDelegate.swift in Sources */,
+				F3C148F91E69533E00719E6C /* CanvasView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,10 +336,11 @@
 		};
 		F3C148F61E69528F00719E6C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3DE8904E904D34AD3AE8514E /* Pods-DrawingCanvas.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = DWYZ64R59Z;
-				INFOPLIST_FILE = DrawingCanvas/Info.plist;
+				INFOPLIST_FILE = app/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.tokoro.DrawingCanvas;
@@ -271,10 +351,11 @@
 		};
 		F3C148F71E69528F00719E6C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2537BFD3A01A105E96E971B4 /* Pods-DrawingCanvas.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = DWYZ64R59Z;
-				INFOPLIST_FILE = DrawingCanvas/Info.plist;
+				INFOPLIST_FILE = app/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.tokoro.DrawingCanvas;
@@ -302,6 +383,7 @@
 				F3C148F71E69528F00719E6C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
