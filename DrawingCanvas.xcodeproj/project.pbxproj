@@ -12,6 +12,7 @@
 		F34A62291E6A62B200A781AD /* PathGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34A62281E6A62B200A781AD /* PathGroup.swift */; };
 		F34A622B1E6A64BC00A781AD /* Drawable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34A622A1E6A64BC00A781AD /* Drawable.swift */; };
 		F34A622D1E6A697400A781AD /* Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34A622C1E6A697400A781AD /* Path.swift */; };
+		F34A622F1E6A845500A781AD /* Movable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34A622E1E6A845500A781AD /* Movable.swift */; };
 		F39850151E6A4DE700B22A1A /* HandlePathView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39850141E6A4DE700B22A1A /* HandlePathView.swift */; };
 		F3C148E71E69528F00719E6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C148E61E69528F00719E6C /* AppDelegate.swift */; };
 		F3C148E91E69528F00719E6C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C148E81E69528F00719E6C /* ViewController.swift */; };
@@ -29,6 +30,7 @@
 		F34A62281E6A62B200A781AD /* PathGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathGroup.swift; sourceTree = "<group>"; };
 		F34A622A1E6A64BC00A781AD /* Drawable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Drawable.swift; sourceTree = "<group>"; };
 		F34A622C1E6A697400A781AD /* Path.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Path.swift; sourceTree = "<group>"; };
+		F34A622E1E6A845500A781AD /* Movable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movable.swift; sourceTree = "<group>"; };
 		F39850141E6A4DE700B22A1A /* HandlePathView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HandlePathView.swift; sourceTree = "<group>"; };
 		F3C148E31E69528F00719E6C /* DrawingCanvas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrawingCanvas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3C148E61E69528F00719E6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				F34A62261E6A5FAB00A781AD /* PathObserver.swift */,
 				F34A62281E6A62B200A781AD /* PathGroup.swift */,
 				F34A622A1E6A64BC00A781AD /* Drawable.swift */,
+				F34A622E1E6A845500A781AD /* Movable.swift */,
 				F34A622C1E6A697400A781AD /* Path.swift */,
 				F3C148EA1E69528F00719E6C /* Main.storyboard */,
 				F3C148ED1E69528F00719E6C /* Assets.xcassets */,
@@ -233,6 +236,7 @@
 				F34A62291E6A62B200A781AD /* PathGroup.swift in Sources */,
 				F3C148E91E69528F00719E6C /* ViewController.swift in Sources */,
 				F34A622D1E6A697400A781AD /* Path.swift in Sources */,
+				F34A622F1E6A845500A781AD /* Movable.swift in Sources */,
 				F3C148E71E69528F00719E6C /* AppDelegate.swift in Sources */,
 				F34A622B1E6A64BC00A781AD /* Drawable.swift in Sources */,
 				F3C148F91E69533E00719E6C /* CanvasView.swift in Sources */,

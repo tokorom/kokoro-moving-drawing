@@ -30,7 +30,8 @@ class PathObserver {
 
         if !currentPathGroupContains(path: path) {
             if let group = nearGroup(from: path) {
-                group.addPath(path)
+                let groupOrigin = group.frame.origin
+                group.addPath(path.translatedPath(with: groupOrigin))
             } else {
                 let group = PathGroup()
                 group.addPath(path)

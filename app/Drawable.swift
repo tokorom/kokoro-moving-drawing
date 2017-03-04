@@ -7,6 +7,5 @@
 import UIKit
 
 protocol Drawable {
-    var identifier: String { get }
-    func draw()
+    func draw(_ rect: CGRect)
 }

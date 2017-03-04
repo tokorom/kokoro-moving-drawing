@@ -11,7 +11,8 @@ import RxCocoa
 class CanvasView: UIView {
     weak var handlePathView: HandlePathView?
 
-    var drawObjects: [Drawable] = []
+    var movableObjects: [Movable] = []
+    var liftedObject: Movable?
 
     let disposeBag = DisposeBag()
     let pathObserver = PathObserver()
@@ -40,28 +41,66 @@ class CanvasView: UIView {
             })
             .addDisposableTo(disposeBag)
 
+        handlePathView?.rxx.moveTo.asDriver()
+            .drive(onNext: { [weak self] in
+                self?.moveObjectIfNeeded(to: $0)
+            })
+            .addDisposableTo(disposeBag)
+
         pathObserver.rxx.pathGroup.asDriver()
             .drive(onNext: { [weak self] in
-                self?.handleDrawObject($0)
+                self?.handleMovableObject($0)
             })
             .addDisposableTo(disposeBag)
     }
 
-    func handleDrawObject(_ object: Drawable?) {
+    func handleMovableObject(_ object: Movable?) {
         guard let object = object else {
             return
         }
 
-        if drawObjects.last?.identifier != object.identifier {
-            drawObjects.append(object)
-            print("### objects.count: \(drawObjects.count)")
+        if movableObjects.last?.identifier != object.identifier {
+            movableObjects.append(object)
+            if let view = object as? UIView {
+                view.frame = bounds
+                if let handlePathView = handlePathView {
+                    insertSubview(view, belowSubview: handlePathView)
+                }
+            }
         }
-        setNeedsDisplay()
+
+        for subview in subviews {
+            subview.setNeedsDisplay()
+        }
     }
 
-    override func draw(_ rect: CGRect) {
-        for object in drawObjects {
-            object.draw()
+    func moveObjectIfNeeded(to point: CGPoint?) {
+        guard let point = point else {
+            liftedObject?.drop()
+            liftedObject = nil
+            return
+        }
+
+        if let object = liftedObject {
+            object.move(to: point)
+        } else {
+            liftedObject = nearObject(from: point)
+            liftedObject?.lift(at: point)
         }
     }
+
+    func nearObject(from point: CGPoint) -> Movable? {
+        for object in movableObjects {
+            if object.isNear(from: point) {
+                return object
+            }
+        }
+        return nil
+    }
+
+/*     override func draw(_ rect: CGRect) {
+        for object in drawObjects {
+            object.draw(rect)
+        }
+    } */
 }
