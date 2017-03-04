@@ -23,6 +23,10 @@ class PathObserver {
 
     let rxx = Rxx()
 
+    func clear() {
+        pathGroups.removeAll()
+    }
+
     func handlePath(_ path: Path?) {
         guard let path = path else {
             return

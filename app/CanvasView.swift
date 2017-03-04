@@ -10,12 +10,12 @@ import RxCocoa
 
 class CanvasView: UIView {
     weak var handlePathView: HandlePathView?
+    let pathObserver = PathObserver()
 
     var movableObjects: [Movable] = []
     var liftedObject: Movable?
 
     let disposeBag = DisposeBag()
-    let pathObserver = PathObserver()
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,6 +23,19 @@ class CanvasView: UIView {
         addHandlePathView()
 
         bind()
+    }
+
+    func clear() {
+        handlePathView?.clear()
+        pathObserver.clear()
+        movableObjects.removeAll()
+        liftedObject = nil
+
+        for subview in subviews {
+            subview.removeFromSuperview()
+        }
+
+        redraw()
     }
 
     func addHandlePathView() {
@@ -69,9 +82,14 @@ class CanvasView: UIView {
             }
         }
 
+        redraw()
+    }
+
+    func redraw() {
         for subview in subviews {
             subview.setNeedsDisplay()
         }
+        setNeedsDisplay()
     }
 
     func moveObjectIfNeeded(to point: CGPoint?) {

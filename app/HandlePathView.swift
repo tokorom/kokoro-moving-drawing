@@ -20,10 +20,43 @@ class HandlePathView: UIView {
 
     let rxx = Rxx()
 
+    var recorder: Recorder {
+        return Recorder.shared
+    }
+
+    func clear() {
+        currentPath = nil
+        mode = .draw
+    }
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let point = touches.first?.location(in: self) else {
             return
         }
+
+        began(with: point)
+    }
+
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else {
+            return
+        }
+
+        let point = touch.location(in: self)
+        let force = touch.force > forceTouchThreshold
+        moved(with: point, force: force)
+    }
+
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        ended()
+    }
+
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        ended()
+    }
+
+    func began(with point: CGPoint) {
+        recorder.record(.began(point))
 
         let path = Path()
         path.movePoint(to: point)
@@ -31,39 +64,24 @@ class HandlePathView: UIView {
         self.currentPath = path
     }
 
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if mode == .move {
-            for touch in touches {
-                let point = touch.location(in: self)
-                rxx.moveTo.value = point
-            }
-        } else {
-            guard let touch = touches.first else {
-                return
-            }
-            let point = touch.location(in: self)
-            if touch.force > forceTouchThreshold {
-                mode = .move
-                rxx.moveTo.value = point
-            } else {
-                mode = .draw
-                currentPath?.line(to: point)
-                rxx.path.value = currentPath
-            }
-        }
-    }
+    func moved(with point: CGPoint, force: Bool) {
+        recorder.record(.moved(point, force))
 
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if mode == .move {
-            rxx.moveTo.value = nil
+            rxx.moveTo.value = point
+        } else if force {
+            mode = .move
+            rxx.moveTo.value = point
         } else {
+            mode = .draw
+            currentPath?.line(to: point)
             rxx.path.value = currentPath
         }
-        currentPath = nil
-        mode = .draw
     }
 
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+    func ended() {
+        recorder.record(.ended)
+
         if mode == .move {
             rxx.moveTo.value = nil
         } else {
