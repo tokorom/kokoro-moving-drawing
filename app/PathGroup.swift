@@ -22,9 +22,9 @@ class PathGroup {
         return paths.last?.identifier == path.identifier
     }
 
-    func isNear(by targetPath: Path) -> Bool {
+    func isNear(from targetPath: Path) -> Bool {
         for path in paths {
-            if path.isNear(by: targetPath) {
+            if path.isNear(from: targetPath) {
                 return true
             }
         }

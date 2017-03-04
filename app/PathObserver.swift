@@ -9,44 +9,49 @@ import RxSwift
 import RxCocoa
 
 class PathObserver {
-    var currentPathGroup_: PathGroup?
     var currentPathGroup: PathGroup {
-        if let group = currentPathGroup_ {
+        if let group = pathGroups.last {
             return group
         } else {
             let group = PathGroup()
-            currentPathGroup_ = group
+            pathGroups.append(group)
             return group
         }
     }
 
-    let rxx = Rxx()
+    var pathGroups: [PathGroup] = []
 
-    func clearCurrentPathGroup() {
-        currentPathGroup_ = nil
-    }
+    let rxx = Rxx()
 
     func handlePath(_ path: Path?) {
         guard let path = path else {
             return
         }
+
         if !currentPathGroupContains(path: path) {
-            if !isNearFromCurrentGroup(with: path) {
-                clearCurrentPathGroup()
+            if let group = nearGroup(from: path) {
+                group.addPath(path)
+            } else {
+                let group = PathGroup()
+                group.addPath(path)
+                pathGroups.append(group)
             }
-            currentPathGroup.addPath(path)
         }
-        if let group = currentPathGroup_ {
-            rxx.pathGroup.value = group
-        }
+
+        rxx.pathGroup.value = currentPathGroup
     }
 
     func currentPathGroupContains(path: Path) -> Bool {
         return currentPathGroup.contains(path: path)
     }
 
-    func isNearFromCurrentGroup(with path: Path) -> Bool {
-        return currentPathGroup.isNear(by: path)
+    func nearGroup(from path: Path) -> PathGroup? {
+        for group in pathGroups {
+            if group.isNear(from: path) {
+                return group
+            }
+        }
+        return nil
     }
 }
 

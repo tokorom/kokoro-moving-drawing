@@ -28,7 +28,7 @@ struct Path {
         bezierPath.addLine(to: point)
     }
 
-    func isNear(by targetPath: Path) -> Bool {
+    func isNear(from targetPath: Path) -> Bool {
         return extendedBounds.intersects(targetPath.extendedBounds)
     }
 }
