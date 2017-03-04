@@ -10,8 +10,14 @@ struct Path {
     let identifier: String
     let bezierPath = UIBezierPath()
 
+    var distanceForNearChecking: CGFloat = -10
+
     init() {
         self.identifier = UUID().uuidString
+    }
+
+    var extendedBounds: CGRect {
+        return bezierPath.bounds.insetBy(dx: distanceForNearChecking, dy: distanceForNearChecking)
     }
 
     func move(to point: CGPoint) {
@@ -20,6 +26,10 @@ struct Path {
 
     func addLine(to point: CGPoint) {
         bezierPath.addLine(to: point)
+    }
+
+    func isNear(by targetPath: Path) -> Bool {
+        return extendedBounds.intersects(targetPath.extendedBounds)
     }
 }
 

@@ -46,7 +46,7 @@ class PathObserver {
     }
 
     func isNearFromCurrentGroup(with path: Path) -> Bool {
-        return false
+        return currentPathGroup.isNear(by: path)
     }
 }
 

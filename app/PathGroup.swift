@@ -21,6 +21,15 @@ class PathGroup {
     func contains(path: Path) -> Bool {
         return paths.last?.identifier == path.identifier
     }
+
+    func isNear(by targetPath: Path) -> Bool {
+        for path in paths {
+            if path.isNear(by: targetPath) {
+                return true
+            }
+        }
+        return false
+    }
 }
 
 // MARK: - Drawable
