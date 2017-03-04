@@ -7,6 +7,8 @@ target 'DrawingCanvas' do
   # Pods for square
   pod 'RxSwift'
   pod 'RxCocoa'
-  pod 'Kingfisher'
   pod 'Firebase'
+
+  pod 'SVProgressHUD'
+  pod 'Toaster'
 end

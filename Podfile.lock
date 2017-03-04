@@ -20,16 +20,18 @@ PODS:
   - GoogleToolboxForMac/Defines (2.1.0)
   - GoogleToolboxForMac/NSData+zlib (2.1.0):
     - GoogleToolboxForMac/Defines (= 2.1.0)
-  - Kingfisher (3.2.2)
   - RxCocoa (3.0.1):
     - RxSwift (~> 3.0)
   - RxSwift (3.0.1)
+  - SVProgressHUD (2.1.1)
+  - Toaster (2.0.1)
 
 DEPENDENCIES:
   - Firebase
-  - Kingfisher
   - RxCocoa
   - RxSwift
+  - SVProgressHUD
+  - Toaster
 
 SPEC CHECKSUMS:
   Firebase: 387f37c7dca894a02708da9ff35ba147040eae9e
@@ -39,10 +41,11 @@ SPEC CHECKSUMS:
   GoogleInterchangeUtilities: d5bc4d88d5b661ab72f9d70c58d02ca8c27ad1f7
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleToolboxForMac: 2b2596cbb7186865e98cadf2b1e262d851c2b168
-  Kingfisher: 821466474ad7ffc375a4aecadfa05068cfed67b3
   RxCocoa: 15a52fc590dcc700cb4a690a633b5c5184ce3a78
   RxSwift: af5680055c4ad04480189c52d28385b1029493a6
+  SVProgressHUD: 1127180503b9a308ddf7006f3cc58fc05cc1092d
+  Toaster: be65cd48e93a525b2a9cc4bd25a2bfc900e02d9f
 
-PODFILE CHECKSUM: 83959bafba16ef0be8b73124f4fa7c339b981ab5
+PODFILE CHECKSUM: ec6a7e904c6f9415ab120682d5f71ea184a7f458
 
 COCOAPODS: 1.2.0

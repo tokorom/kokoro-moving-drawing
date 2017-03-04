@@ -8,26 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Everyone-->
-        <scene sceneID="ldT-2V-CRw">
-            <objects>
-                <viewController id="XlT-NJ-EBc" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="1Fr-ba-fVc"/>
-                        <viewControllerLayoutGuide type="bottom" id="AUt-vg-tLx"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="qgo-vm-gxO">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Everyone" id="cgh-Tm-KlU"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="M3P-iN-bNX" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="594" y="222"/>
-        </scene>
-        <!--Draw-->
+        <!--Drawing-->
         <scene sceneID="2h3-2J-Rjb">
             <objects>
                 <viewController id="vlo-mh-bHQ" customClass="DrawingViewController" customModule="DrawingCanvas" customModuleProvider="target" sceneMemberID="viewController">
@@ -43,8 +24,8 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YnJ-gy-Idb">
-                                        <rect key="frame" x="316" y="7" width="51" height="30"/>
-                                        <state key="normal" title="Publish"/>
+                                        <rect key="frame" x="244" y="7" width="123" height="30"/>
+                                        <state key="normal" title="Send to my father"/>
                                         <connections>
                                             <action selector="publishButtonDidTapWithSender:" destination="vlo-mh-bHQ" eventType="touchUpInside" id="Tu3-Vt-o6g"/>
                                         </connections>
@@ -73,7 +54,7 @@
                             <constraint firstItem="deK-I0-n9d" firstAttribute="leading" secondItem="fDC-N1-Aba" secondAttribute="leading" id="uAx-BS-7FW"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Draw" id="Rxp-re-x6q"/>
+                    <tabBarItem key="tabBarItem" title="Drawing" image="drawing" id="Rxp-re-x6q"/>
                     <connections>
                         <outlet property="canvasView" destination="deK-I0-n9d" id="DQt-1p-kUl"/>
                     </connections>
@@ -93,12 +74,65 @@
                     </tabBar>
                     <connections>
                         <segue destination="vlo-mh-bHQ" kind="relationship" relationship="viewControllers" id="c6f-wD-TDy"/>
-                        <segue destination="XlT-NJ-EBc" kind="relationship" relationship="viewControllers" id="mcP-74-2le"/>
+                        <segue destination="Tqf-ZU-aZK" kind="relationship" relationship="viewControllers" id="PVA-ci-qkS"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4tA-NJ-WKk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-358" y="-106"/>
         </scene>
+        <!--Everyone-->
+        <scene sceneID="f9h-vU-fZa">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Tqf-ZU-aZK" customClass="EveryoneViewController" customModule="DrawingCanvas" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Qov-GV-XK3"/>
+                        <viewControllerLayoutGuide type="bottom" id="La2-Yc-ba7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="U1D-0L-ms3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="91q-TQ-pcX">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <color key="backgroundColor" red="0.94901961089999998" green="0.94901961089999998" blue="0.94901961089999998" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="8oe-8H-vN6"/>
+                                    <constraint firstAttribute="height" constant="44" id="nXi-Sr-w04"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kLU-Kc-aDR">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Tqf-ZU-aZK" id="rya-k3-HtJ"/>
+                                    <outlet property="delegate" destination="Tqf-ZU-aZK" id="PGe-Ld-f2A"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.94901961088180542" green="0.94901961088180542" blue="0.94901961088180542" alpha="1" colorSpace="deviceRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="kLU-Kc-aDR" secondAttribute="trailing" id="1iL-oc-qYh"/>
+                            <constraint firstItem="kLU-Kc-aDR" firstAttribute="top" secondItem="91q-TQ-pcX" secondAttribute="bottom" id="GIR-DL-TJx"/>
+                            <constraint firstAttribute="trailing" secondItem="91q-TQ-pcX" secondAttribute="trailing" id="LfL-og-Pmf"/>
+                            <constraint firstItem="91q-TQ-pcX" firstAttribute="leading" secondItem="U1D-0L-ms3" secondAttribute="leading" id="QfC-c5-wJH"/>
+                            <constraint firstItem="kLU-Kc-aDR" firstAttribute="leading" secondItem="U1D-0L-ms3" secondAttribute="leading" id="YwJ-RI-we2"/>
+                            <constraint firstItem="La2-Yc-ba7" firstAttribute="top" secondItem="kLU-Kc-aDR" secondAttribute="bottom" id="lQX-kI-qvt"/>
+                            <constraint firstItem="91q-TQ-pcX" firstAttribute="top" secondItem="Qov-GV-XK3" secondAttribute="bottom" id="vkc-Y3-s5A"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Everyone" image="cloud" id="yK9-ng-rl7"/>
+                    <connections>
+                        <outlet property="tableView" destination="kLU-Kc-aDR" id="w5y-bi-Jx1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rhN-sh-gCR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="592.79999999999995" y="249.62518740629687"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="cloud" width="16" height="16"/>
+        <image name="drawing" width="16" height="16"/>
+    </resources>
 </document>

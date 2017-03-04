@@ -6,6 +6,7 @@
 
 import UIKit
 import RxSwift
+import SVProgressHUD
 
 class DrawingViewController: UIViewController {
     @IBOutlet weak var canvasView: CanvasView?
@@ -19,10 +20,13 @@ class DrawingViewController: UIViewController {
     }
 
     @IBAction func publishButtonDidTap(sender: AnyObject) {
-        let dicts = recorder.serializedDicts()
-        print(dicts)
+        let _ = recorder.serializedDicts()
 
-        recorder.clear()
-        canvasView?.clear()
+        SVProgressHUD.show()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
+            SVProgressHUD.showSuccess(withStatus: "Arrived :)")
+            self?.recorder.clear()
+            self?.canvasView?.clear()
+        }
     }
 }
