@@ -12,7 +12,11 @@ class HandlePathView: UIView {
     var currentPath: Path?
     var mode: Mode = .draw
 
+#if (arch(i386) || arch(x86_64)) && os(iOS)
+    var forceTouchThreshold: CGFloat = 10.0
+#else
     var forceTouchThreshold: CGFloat = 3.0
+#endif
 
     let rxx = Rxx()
 

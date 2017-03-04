@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Bmy-Nv-v9b">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -8,37 +8,86 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Everyone-->
+        <scene sceneID="ldT-2V-CRw">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="DrawingCanvas" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XlT-NJ-EBc" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                        <viewControllerLayoutGuide type="top" id="1Fr-ba-fVc"/>
+                        <viewControllerLayoutGuide type="bottom" id="AUt-vg-tLx"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="qgo-vm-gxO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Everyone" id="cgh-Tm-KlU"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M3P-iN-bNX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="594" y="222"/>
+        </scene>
+        <!--Draw-->
+        <scene sceneID="2h3-2J-Rjb">
+            <objects>
+                <viewController id="vlo-mh-bHQ" customClass="DrawingViewController" customModule="DrawingCanvas" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Rt7-b0-NbY"/>
+                        <viewControllerLayoutGuide type="bottom" id="t2N-lm-BQK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fDC-N1-Aba">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HoI-tt-QNB" customClass="CanvasView" customModule="DrawingCanvas" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y5D-6j-xQ7">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <color key="backgroundColor" red="0.94901961088180542" green="0.94901961088180542" blue="0.94901961088180542" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="1fk-sH-BcQ"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="deK-I0-n9d" customClass="CanvasView" customModule="DrawingCanvas" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.94901961088180542" green="0.94901961088180542" blue="0.94901961088180542" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="HoI-tt-QNB" secondAttribute="bottom" id="BmV-UB-AqV"/>
-                            <constraint firstAttribute="trailing" secondItem="HoI-tt-QNB" secondAttribute="trailing" id="C2Q-FY-fEo"/>
-                            <constraint firstItem="HoI-tt-QNB" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="OqP-cO-XEG"/>
-                            <constraint firstItem="HoI-tt-QNB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="YBE-2K-sKo"/>
+                            <constraint firstItem="deK-I0-n9d" firstAttribute="top" secondItem="Y5D-6j-xQ7" secondAttribute="bottom" id="80F-g5-qo7"/>
+                            <constraint firstItem="Y5D-6j-xQ7" firstAttribute="top" secondItem="Rt7-b0-NbY" secondAttribute="bottom" id="Ahr-Mm-d1Q"/>
+                            <constraint firstItem="t2N-lm-BQK" firstAttribute="top" secondItem="deK-I0-n9d" secondAttribute="bottom" id="FSV-Ek-Vkn"/>
+                            <constraint firstItem="Y5D-6j-xQ7" firstAttribute="leading" secondItem="fDC-N1-Aba" secondAttribute="leading" id="Hh4-Ou-wKy"/>
+                            <constraint firstAttribute="trailing" secondItem="deK-I0-n9d" secondAttribute="trailing" id="aXL-ev-7NU"/>
+                            <constraint firstAttribute="trailing" secondItem="Y5D-6j-xQ7" secondAttribute="trailing" id="eeU-2u-b7y"/>
+                            <constraint firstItem="deK-I0-n9d" firstAttribute="leading" secondItem="fDC-N1-Aba" secondAttribute="leading" id="uAx-BS-7FW"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Draw" id="Rxp-re-x6q"/>
                     <connections>
-                        <outlet property="canvasView" destination="HoI-tt-QNB" id="GhZ-KG-iqm"/>
+                        <outlet property="canvasView" destination="deK-I0-n9d" id="DQt-1p-kUl"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xSW-v1-4ts" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="592.79999999999995" y="-433.13343328335833"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="MYX-bo-4xC">
+            <objects>
+                <tabBarController id="Bmy-Nv-v9b" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="2rx-71-OPG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="vlo-mh-bHQ" kind="relationship" relationship="viewControllers" id="c6f-wD-TDy"/>
+                        <segue destination="XlT-NJ-EBc" kind="relationship" relationship="viewControllers" id="mcP-74-2le"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4tA-NJ-WKk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-358" y="-106"/>
         </scene>
     </scenes>
 </document>
