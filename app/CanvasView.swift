@@ -5,34 +5,63 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class CanvasView: UIView {
-    var currentPath: UIBezierPath?
+    weak var handlePathView: HandlePathView?
 
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let point = touches.first?.location(in: self) else {
+    var drawObjects: [Drawable] = []
+
+    let disposeBag = DisposeBag()
+    let pathObserver = PathObserver()
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+        addHandlePathView()
+
+        bind()
+    }
+
+    func addHandlePathView() {
+        let view = HandlePathView()
+        view.frame = bounds
+        view.backgroundColor = UIColor.clear
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        addSubview(view)
+        self.handlePathView = view
+    }
+
+    func bind() {
+        handlePathView?.rxx.path.asDriver()
+            .drive(onNext: { [weak self] in
+                self?.pathObserver.handlePath($0)
+            })
+            .addDisposableTo(disposeBag)
+
+        pathObserver.rxx.pathGroup.asDriver()
+            .drive(onNext: { [weak self] in
+                self?.handleDrawObject($0)
+            })
+            .addDisposableTo(disposeBag)
+    }
+
+    func handleDrawObject(_ object: Drawable?) {
+        guard let object = object else {
             return
         }
 
-        let path = UIBezierPath()
-        path.move(to: point)
-        path.addLine(to: point)
-        self.currentPath = path
-    }
-
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let point = touches.first?.location(in: self) else {
-            return
+        if drawObjects.last?.identifier != object.identifier {
+            drawObjects.append(object)
+            print("### objects.count: \(drawObjects.count)")
         }
-
-        currentPath?.addLine(to: point)
+        setNeedsDisplay()
     }
 
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.currentPath = nil
-    }
-
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.currentPath = nil
+    override func draw(_ rect: CGRect) {
+        for object in drawObjects {
+            object.draw()
+        }
     }
 }

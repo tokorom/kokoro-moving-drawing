@@ -1,0 +1,16 @@
+disabled_rules:
+  - variable_name
+  - nesting
+  - conditional_binding_cascade
+  - type_name
+included:
+  - app
+  - tests
+line_length:
+  - 255 # warning
+function_body_length:
+  - 100 # warning
+type_body_length:
+  - 500 # warning
+file_length:
+  - 500 # warning
